@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import TodoTemplet from './component/todotemplet';
 import TodoInfoList from './component/todoInfoList';
 import TodoForm from './component/todoForm';
+import {Title, Todo} from './component/style';
 
 class App extends Component {
 
@@ -9,13 +9,13 @@ class App extends Component {
     input : '', 
     todos : [
       {id : 0, content : "asdf", isChecked : false},
-   ]
+   ],
   }
 
   changeContent = (e) =>{
     this.setState({
         input : e.target.value
-    })
+    })  
 }
 
 handleCreate = () => {
@@ -52,19 +52,21 @@ handleCreate = () => {
 
   render(){
     return (
-      <div>
-          <TodoTemplet />
-          <TodoForm 
-            input = {this.state.input}
-            changeContent = {this.changeContent}
-            onCreate = {this.handleCreate}
-          />
-          <TodoInfoList 
-            todos = {this.state.todos}
-            toggleItem = {this.toggleItem}
-            removeIitem = {this.removeIitem}
-          />
-      </div>
+      <Todo>
+        <Title>
+          todo 
+        </Title>
+        <TodoForm 
+          input = {this.state.input}
+          changeContent = {this.changeContent}
+          onCreate = {this.handleCreate}
+        />
+        <TodoInfoList 
+          todos = {this.state.todos}
+          toggleItem = {this.toggleItem}
+          removeIitem = {this.removeIitem}
+        />
+      </Todo>
     );
   }
 }
