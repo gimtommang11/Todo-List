@@ -2,7 +2,7 @@
 //이 정보들은 todoForm에서 내려옵니다
 import React, {Component} from 'react'
 import './style';
-import { Info, DeleteIcon, CheckedIcon} from './style';
+import { Info, DeleteIcon, CheckedIcon, Contnet} from './style';
 
 class TodoInfo extends Component{
 static defaultProps = {
@@ -14,17 +14,20 @@ static defaultProps = {
     render(){
         const {id, isChecked, content, toggleItem, removeIitem} = this.props;
         return(
-            <Info onClick = {() => toggleItem(id)}  isChecked = {isChecked}>
+            <Info onClick = {() => toggleItem(id)} 
+                 isChecked = {isChecked}>
+                    
                 <DeleteIcon onClick = {(e) => { 
                     e.stopPropagation();
                     removeIitem(id)}
                 }>&times;</DeleteIcon>
-                <div>{content}</div>
+
+                <Contnet isChecked = {isChecked}>{content}</Contnet>
+
                 <div>
                     {isChecked && <CheckedIcon>&#x2713;</CheckedIcon>
                     }
-                </div>
-                
+                </div>  
             </Info>
         );
     }
